@@ -35,7 +35,7 @@ class Account:
         self.balance = self.balance - amountToWithdraw
         return self.balance
 
-    def getBalance(self, password):
+    def getBalance(self):
         return self.balance
 
     def show(self):
