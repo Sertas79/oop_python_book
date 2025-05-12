@@ -17,6 +17,7 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
 #4 - Загружаем элементы: изображения, звуки и т.д.
+ballimage = pygame.image.load('images/ball.png')
 
 #5 - Инициализируем переменные
 
@@ -37,6 +38,8 @@ while True:
     window.fill(BLACK)
 
     #10 - Рисуем все элементы окна
+    # рисуем мяч на позиции 100 вдоль (x) и 200 вниз по (y)
+    window.blit(ballimage, (100, 200))
 
     #11 - Обновляем окно
     pygame.display.update()
