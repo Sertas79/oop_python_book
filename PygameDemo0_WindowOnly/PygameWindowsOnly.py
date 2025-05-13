@@ -2,7 +2,6 @@
 
 #1 - Импортируем пакеты
 import pygame
-from pygame.locals import *
 import sys
 import random
 
@@ -42,20 +41,27 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        # определяем, нажал ли пользователь клавишу
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                ballX -= N_PIXELS_TO_MOVE
-            elif event.key == pygame.K_RIGHT:
-                ballX += N_PIXELS_TO_MOVE
-            elif event.key == pygame.K_UP:
-                ballY -= N_PIXELS_TO_MOVE
-            elif event.key == pygame.K_DOWN:
-                ballY += N_PIXELS_TO_MOVE
 
     #8 - Выполняем действия "в рамках фрейма"
+    # Проверяем нажатия клавиш пользователем
+    keyPressedTuple = pygame.key.get_pressed()
+
+    if keyPressedTuple[pygame.K_LEFT]:
+        ballX -= N_PIXELS_TO_MOVE
+
+    if keyPressedTuple[pygame.K_RIGHT]:
+        ballX += N_PIXELS_TO_MOVE
+
+    if keyPressedTuple[pygame.K_UP]:
+        ballY -= N_PIXELS_TO_MOVE
+
+    if keyPressedTuple[pygame.K_DOWN]:
+        ballY += N_PIXELS_TO_MOVE
+
     # определяем, перекрывает ли мяч целевое изображение
-    ballRect = pygame.Rect(ballX, ballY, BALL_WIDTH_HEIGHT, BALL_WIDTH_HEIGHT)
+    ballRect = pygame.Rect(ballX, ballY,
+                           BALL_WIDTH_HEIGHT, BALL_WIDTH_HEIGHT)
+
     if ballRect.colliderect(targetRect):
         print('Ball is touching the target')
 
